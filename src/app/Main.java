@@ -1,12 +1,14 @@
-package app;
+package interpreter;
+import java.util.*;
 
 public class Main {
 
   public static void main(String[] args) {
     Lexicon lex = new Lexicon();
 
-    String newWord = lex.translate("food");
+    String newWord = lex.translate("entropy");
     System.out.println(newWord);
+    System.out.println(decode(lex.translate("entropy")));
 
   }
 
@@ -15,8 +17,23 @@ public class Main {
    * 
    * @param word The single word to be decoded.
    */
-  public static String decode(String word) {
-    return "";
+  public static String decode(String word)
+  {
+      char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+
+
+	  for (int i = 0; i<word.length()-1; i++)
+	  {
+		 if (word.contains("ent"))
+		 {
+			 word = word.replaceFirst("ent","");
+		 }
+		 if (word.substring(word.length()-5,word.length()-1) == "ingy")
+		 {
+			 word = word.replace("ingy", "");
+		 }
+	  }
+	  return word;
   }
 
   /**
@@ -24,23 +41,8 @@ public class Main {
    * 
    * @param message The sentence (multiple words) to be decoded.
    */
-  public static String decodeMessage(String message) {
-    return "";
-  }
-
-  /**
-   * This method uses the decode(String) and a Scanner to decode a word specified
-   * by the user.
-   */
-  public static String decodeInput() {
-    return "";
-  }
-  
-  /**
-   * This method uses the Lexicon translate(String) and a Scanner to encode a word specified
-   * by the user.
-   */
-  public static String encodeInput() {
+  public static String decodeMessage(String message)
+  {
     return "";
   }
 }
